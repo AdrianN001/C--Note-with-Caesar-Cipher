@@ -1,0 +1,15 @@
+/home/adrian/Desktop/Programozas/C# Note/bin/Debug/net6.0/C# Note
+/home/adrian/Desktop/Programozas/C# Note/bin/Debug/net6.0/C# Note.deps.json
+/home/adrian/Desktop/Programozas/C# Note/bin/Debug/net6.0/C# Note.runtimeconfig.json
+/home/adrian/Desktop/Programozas/C# Note/bin/Debug/net6.0/C# Note.dll
+/home/adrian/Desktop/Programozas/C# Note/bin/Debug/net6.0/C# Note.pdb
+/home/adrian/Desktop/Programozas/C# Note/obj/Debug/net6.0/C# Note.csproj.AssemblyReference.cache
+/home/adrian/Desktop/Programozas/C# Note/obj/Debug/net6.0/C# Note.GeneratedMSBuildEditorConfig.editorconfig
+/home/adrian/Desktop/Programozas/C# Note/obj/Debug/net6.0/C# Note.AssemblyInfoInputs.cache
+/home/adrian/Desktop/Programozas/C# Note/obj/Debug/net6.0/C# Note.AssemblyInfo.cs
+/home/adrian/Desktop/Programozas/C# Note/obj/Debug/net6.0/C# Note.csproj.CoreCompileInputs.cache
+/home/adrian/Desktop/Programozas/C# Note/obj/Debug/net6.0/C# Note.dll
+/home/adrian/Desktop/Programozas/C# Note/obj/Debug/net6.0/refint/C# Note.dll
+/home/adrian/Desktop/Programozas/C# Note/obj/Debug/net6.0/C# Note.pdb
+/home/adrian/Desktop/Programozas/C# Note/obj/Debug/net6.0/C# Note.genruntimeconfig.cache
+/home/adrian/Desktop/Programozas/C# Note/obj/Debug/net6.0/ref/C# Note.dll
