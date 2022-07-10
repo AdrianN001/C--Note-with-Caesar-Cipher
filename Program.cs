@@ -19,21 +19,27 @@ while (true)
     
 
    
-        try{
-            var lista = Note.show_notes(File.ReadAllText(STORAGE_PATH));
+        var lista = Note.show_notes(File.ReadAllText(STORAGE_PATH).Replace("\n",""));
+        //Console.WriteLine(File.ReadAllText(STORAGE_PATH).Replace("\n","").Length);
+        if( File.ReadAllText(STORAGE_PATH).Replace("\n","").Length > 4 )
+        {
             for(var i = 0; i < lista.Count ; i++)
             {
-                // Console.WriteLine(@$"
-                // .........................
-                // {i + 1}.   {Note.decode_string_Static(lista[i])}
-                // ");
-                Console.WriteLine(lista[i]);
+
+                    Console.WriteLine(@$"
+                    .........................
+                    {i + 1}.   {Note.decode_string(lista[i])}
+                    ");
+             
+                
             }
-            }
-        catch(Exception E){
-            //Console.WriteLine("Eddig Nem Volt Feljegyzésed");
-            Console.WriteLine(E);
-            };
+
+        }else{
+        
+
+            Console.WriteLine("Eddig Nem Volt Feljegyzésed");
+            
+        };
     
     Console.WriteLine("Mit Szeretnél Csinálni?");
     Console.WriteLine(@"
@@ -79,6 +85,9 @@ while (true)
         File.WriteAllLines(STORAGE_PATH,jegyzetek);
     
 
+    }else if(mode == 3)
+    {
+        break;
     }
 }
 

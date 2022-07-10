@@ -10,11 +10,11 @@
         "projectUniqueName": "/home/adrian/Desktop/Programozas/C# Note/C# Note.csproj",
         "projectName": "C# Note",
         "projectPath": "/home/adrian/Desktop/Programozas/C# Note/C# Note.csproj",
-        "packagesPath": "/root/.nuget/packages/",
+        "packagesPath": "/home/adrian/.nuget/packages/",
         "outputPath": "/home/adrian/Desktop/Programozas/C# Note/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "/root/.nuget/NuGet/NuGet.Config"
+          "/home/adrian/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net6.0"

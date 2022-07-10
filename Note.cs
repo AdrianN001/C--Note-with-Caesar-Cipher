@@ -30,52 +30,37 @@ class Note{
     }
     private string encode_string(string basic_string)// elore csusztatja 
     {
-        char[] alphabet_num = {'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z','1','2','3','4','5','6','7','8','9','0','A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z','1','2','3','4','5','6','7','8','9','0'};
+        char[] alphabet_num = {'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z','1','2','3','4','5','6','7','8','9','0'};
 
         string starting_string = "";
         foreach(char character in basic_string)
         {
             int index = Array.IndexOf(alphabet_num,char.Parse(character.ToString().ToUpper())) + SHIFTED_VALUE;
 
-            starting_string += alphabet_num[index];
+            starting_string += alphabet_num[index % alphabet_num.Length];
         }
 
         return starting_string;
     }
-    public string decode_string(string encoded_string)//hatra csusztatja
+    
+    public static string decode_string(string encoded_string)//hatra csusztatja
     {
-        char[] alphabet_num = {'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z','1','2','3','4','5','6','7','8','9','0','A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z','1','2','3','4','5','6','7','8','9','0'};
+        char[] alphabet_num = {'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z','1','2','3','4','5','6','7','8','9','0'};
 
         string starting_string = "";
         foreach(char character in encoded_string)
         {
-            int index = Array.IndexOf(alphabet_num,char.Parse(character.ToString().ToUpper())) - SHIFTED_VALUE;
-            
-            if (index > 4)
-                starting_string += (alphabet_num[index]);
-            else if (index < 4)
-                starting_string += (alphabet_num[alphabet_num.Length - index]);
-        }
+            int index = Array.IndexOf(alphabet_num,char.Parse(character.ToString().ToUpper()));
 
-        return starting_string;
-    }
-    public static string decode_string_Static(string encoded_string)//hatra csusztatja
-    {
-        char[] alphabet_num = {'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z','1','2','3','4','5','6','7','8','9','0','A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z','1','2','3','4','5','6','7','8','9','0'};
-
-        string starting_string = "";
-        foreach(char character in encoded_string)
-        {
-            int index = Array.IndexOf(alphabet_num,char.Parse(character.ToString().ToUpper())) - SHIFTED_VALUE;
-            
             if (index >= 4)
-                starting_string += (alphabet_num[index]);
-            else if (index < 4){
-                try
-                {starting_string += (alphabet_num[alphabet_num.Length - 1 - index]);}
-                catch(Exception){Console.WriteLine(character);};
+            {
+                starting_string.Append(alphabet_num[(index - 4) % alphabet_num.Length]);
+                starting_string = $"{starting_string}{alphabet_num[(index - 4) % alphabet_num.Length]}";
+            }else{
+                
+                index += alphabet_num.Length;
+                starting_string = $"{starting_string}{alphabet_num[(index - 4) % alphabet_num.Length]}";
             }
-
         }
 
         return starting_string;
@@ -83,27 +68,31 @@ class Note{
 
     public static List<string> show_notes(string full_text_file)
     {
+    
         full_text_file = full_text_file.Replace("\n","");
 
-        string[] notes = full_text_file.Split(separator);
 
-        List<string> titles = new List<string>();
-
-        for (int i = 0; i < notes.Length; i++)
-        {
-            string cim = notes[i].Split("&&")[0];
-            titles.Add(cim);
-        }
-
-        if (!(titles != new List<string>()))
-            return titles  ;        
-        else 
+        if (!(full_text_file == "") && !(full_text_file == " "))
         {
 
-            var asd = new List<string>();
-            asd.Add("Nem Volt Még Jegyzeted");
-            return asd;
+            string[] notes = full_text_file.Split(separator);
+
+            List<string> titles = new List<string>();
+
+            for (int i = 0; i < notes.Length; i++)
+            {
+                string cim = notes[i].Split("&&")[0];
+                Console.WriteLine();
+                if (cim != " ")
+                    titles.Add(cim);
+            };
+
+            return titles;
+        }else 
+        {
+            return new List<string>();
         }
+
     }
 
     public static string decode_note(string encoded_string)
@@ -111,11 +100,11 @@ class Note{
         string[] szoveg = encoded_string.Split("&&");
 
         string full_szoveg = @$"
-        {szoveg[0]}
+        {Note.decode_string(szoveg[0])}
         ===================================================
-        {szoveg[1]}
+        {Note.decode_string(szoveg[1])}
         ===================================================
-        {szoveg[2]}                        {szoveg[3]}    
+        {Note.decode_string(szoveg[2])}                        {Note.decode_string(szoveg[3])}    
         ";
 
         return full_szoveg;
