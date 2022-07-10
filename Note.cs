@@ -18,7 +18,7 @@ class Note{
         this.Date_Added = Date_Added_1; 
 
         if (Author_1 == null)
-            this.Author = "Adrian";
+            this.Author = Environment.UserName ?? "Adrian";
         else
             this.Author = Author_1; 
     }
@@ -35,6 +35,11 @@ class Note{
         string starting_string = "";
         foreach(char character in basic_string)
         {
+            if (!alphabet_num.Contains(character))
+            {
+                starting_string.Append(character);
+                continue;
+            }
             int index = Array.IndexOf(alphabet_num,char.Parse(character.ToString().ToUpper())) + SHIFTED_VALUE;
 
             starting_string += alphabet_num[index % alphabet_num.Length];
@@ -50,6 +55,11 @@ class Note{
         string starting_string = "";
         foreach(char character in encoded_string)
         {
+            if (!alphabet_num.Contains(character))
+            {
+                starting_string.Append(character);
+                continue;
+            }
             int index = Array.IndexOf(alphabet_num,char.Parse(character.ToString().ToUpper()));
 
             if (index >= 4)

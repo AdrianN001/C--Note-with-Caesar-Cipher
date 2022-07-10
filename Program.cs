@@ -23,7 +23,7 @@ while (true)
         //Console.WriteLine(File.ReadAllText(STORAGE_PATH).Replace("\n","").Length);
         if( File.ReadAllText(STORAGE_PATH).Replace("\n","").Length > 4 )
         {
-            for(var i = 0; i < lista.Count ; i++)
+            for(var i = 0; i != lista.Count - 1 ; i++)
             {
 
                     Console.WriteLine(@$"
@@ -45,6 +45,7 @@ while (true)
     Console.WriteLine(@"
     1. Felovasni Egy Meglévő Jegyzetet
     2. Új Jegyzet Irás
+    3. Kilépés
     ");
 
     int mode = Int32.Parse( Console.ReadLine() ?? "1");
