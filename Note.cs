@@ -28,6 +28,10 @@ class Note{
         string full = $"{encode_string(this.Title)}&&{encode_string(this.Body)}&&{encode_string(this.Date_Added)}&&{encode_string(this.Author)}{separator}";
         return full; 
     }
+
+    private static Func<string,bool>  is_uppercase = (string letter) => letter == letter.ToUpper(); 
+
+
     private string encode_string(string basic_string)// elore csusztatja 
     {
         char[] alphabet_num = {'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z','1','2','3','4','5','6','7','8','9','0'};
@@ -64,7 +68,6 @@ class Note{
 
             if (index >= 4)
             {
-                starting_string.Append(alphabet_num[(index - 4) % alphabet_num.Length]);
                 starting_string = $"{starting_string}{alphabet_num[(index - 4) % alphabet_num.Length]}";
             }else{
                 

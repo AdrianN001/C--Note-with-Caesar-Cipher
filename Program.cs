@@ -7,13 +7,20 @@ using static Note;
 
 
 string STORAGE_PATH = "note.txt";
+
+if (!File.Exists(STORAGE_PATH))
+{
+    Console.WriteLine("ERROR, THE DEFAULT PATH DOESN'T POINT TO AN EXISTING FILE");
+    Console.WriteLine("Plese, Give me a valid file");
+    STORAGE_PATH = Console.ReadLine()!;
+}
 //File.WriteAllLines(STORAGE_PATH,nevek);
 
 
 
 while (true)
 {
-    Console.WriteLine("Az eddigi jegyzeteid: \n");
+    Console.WriteLine("Your Notes: \n");
     Console.WriteLine("---------------------------------------------------");
     
     
@@ -37,28 +44,28 @@ while (true)
         }else{
         
 
-            Console.WriteLine("Eddig Nem Volt Feljegyzésed");
+            Console.WriteLine("You don't have any Notes");
             
         };
     
-    Console.WriteLine("Mit Szeretnél Csinálni?");
+    Console.WriteLine("What would you like to do?");
     Console.WriteLine(@"
-    1. Felovasni Egy Meglévő Jegyzetet
-    2. Új Jegyzet Irás
-    3. Kilépés
+    1. Read an existing Note of yours
+    2. Write a new Note
+    3. Exit
     ");
 
     int mode = Int32.Parse( Console.ReadLine() ?? "1");
     if (mode == 1)
     {
-        Console.WriteLine("Melyik Jegyzetet Olvassam Fel ?");
+        Console.WriteLine("Which one would you like to read ?");
         var index = Int32.Parse( Console.ReadLine() ?? "1");
 
         try{
             var choosen_note = File.ReadAllText(STORAGE_PATH).Split(Note.separator)[index - 1];
             Console.WriteLine(Note.decode_note(choosen_note));
         }
-        catch(Exception){Console.WriteLine("Nincs Olyan Indexü Jegyzet");};
+        catch(Exception){Console.WriteLine("There's no such Note");};
     }else if (mode == 2)
     {
         Console.WriteLine("Cim: \n");
@@ -74,9 +81,9 @@ while (true)
         =================
         
         ");
-        string? authro = Console.ReadLine();
+        string? author = Console.ReadLine();
 
-        Note jegyzet = new Note(cim!,szoveg!,"2022",authro);
+        Note jegyzet = new Note(cim!,szoveg!,"2022",author);
 
         var jegyzetek = File.ReadAllLines(STORAGE_PATH).ToList();
 
@@ -88,6 +95,7 @@ while (true)
 
     }else if(mode == 3)
     {
+        Console.WriteLine("Exit");
         break;
     }
 }
